@@ -2,9 +2,11 @@ package model;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import controller.CadastroProdutoController;
 import view.MenuView;
 
 public class MenuListener implements ActionListener {
@@ -20,9 +22,12 @@ public class MenuListener implements ActionListener {
 		} else if (e.getSource() == MenuView.mntmVerEstoque) {
 			JOptionPane.showMessageDialog(null, "Ver estoque");
 		} else if (e.getSource() == MenuView.mntmProduto) {
-			JOptionPane.showMessageDialog(null, "Cadastrar produto");
+			try {
+				CadastroProdutoController cadastro = new CadastroProdutoController();
+				cadastro.config();
+			} catch (SQLException e1) {
+				JOptionPane.showMessageDialog(null, "Erro ao tentar acessar o banco de dados\n" + e1);
+			}
 		}
-
 	}
-
 }

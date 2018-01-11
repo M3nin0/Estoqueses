@@ -1,10 +1,10 @@
-CREATE DATABASE produtos
+CREATE DATABASE db_prods
 DEFAULT CHARACTER SET utf8
 DEFAULT COLLATE utf8_general_ci;
 
-USE produtos;
+USE db_prods;
 
-CREATE TABLE pessoas(
+CREATE TABLE produtos(
 	id int NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(60) NOT NULL, -- Não pode ser null
 	descricao VARCHAR(120),
