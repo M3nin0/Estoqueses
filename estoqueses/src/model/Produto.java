@@ -1,76 +1,69 @@
 package model;
 
 public class Produto {
-	private Integer codigo;
 	private String nome;
 	private String descricao;
 	private String especificacao;
-	private Marca marca;
-	private Categoria categoria;
+	private String marca;
+	private String categoria;
 	private Integer quantidade;
 	private String unidade;
+	private Double preco;
 
-	public Integer getCodigo() {
-		return codigo;
+	public Produto(String nome, String descricao, String especificacao, Integer quantidade, String unidade,
+			Double preco) {
+
+		this.nome = nome;
+		this.descricao = descricao;
+		this.especificacao = especificacao;
+		this.quantidade = quantidade;
+		this.unidade = unidade;
+		this.preco = preco;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+	public Produto(String nome, String descricao, String especificacao, String marca, String categoria,
+			Integer quantidade, String unidade, Double preco) {
+
+		this.nome = nome;
+		this.descricao = descricao;
+		this.especificacao = especificacao;
+		this.marca = marca;
+		this.categoria = categoria;
+		this.quantidade = quantidade;
+		this.unidade = unidade;
+		this.preco = preco;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public String getDescricao() {
 		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public String getEspecificacao() {
 		return especificacao;
 	}
 
-	public void setEspecificacao(String especificacao) {
-		this.especificacao = especificacao;
-	}
-
-	public Marca getMarca() {
+	public String getMarca() {
 		return marca;
 	}
 
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
-
-	public Categoria getCategoria() {
+	public String getCategoria() {
 		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
 	}
 
 	public Integer getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
 	public String getUnidade() {
 		return unidade;
 	}
 
-	public void setUnidade(String unidade) {
-		this.unidade = unidade;
+	public Double getPreco() {
+		return preco;
 	}
+
 }

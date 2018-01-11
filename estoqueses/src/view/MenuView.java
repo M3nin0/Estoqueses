@@ -2,12 +2,15 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+
+import controller.CadastroProdutoController;
 
 public class MenuView {
 
@@ -16,7 +19,7 @@ public class MenuView {
 	private JMenu mnCadastro;
 	private JMenu mnEstoque;
 	private JMenuBar menuBar;
-	
+
 	public static JMenuItem mntmProduto = new JMenuItem("Produto");
 	public static JMenuItem mntmMarca = new JMenuItem("Marca");
 	public static JMenuItem mntmCategoria = new JMenuItem("Categoria");
@@ -48,6 +51,11 @@ public class MenuView {
 		menuBar.add(mnInicio);
 
 		JMenuItem mntmConfiguraes = new JMenuItem("Configurações");
+		mntmConfiguraes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+			}
+		});
 		mnInicio.add(mntmConfiguraes);
 
 		JMenuItem mntmSair = new JMenuItem("Sair");
@@ -63,6 +71,15 @@ public class MenuView {
 
 		JMenu mnCadastro = new JMenu("Cadastrar");
 		menuBar.add(mnCadastro);
+		mntmProduto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					new CadastroProdutoController();
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "Erro ao carregar o banco de dados");
+				}
+			}
+		});
 		mnCadastro.add(mntmProduto);
 		mnCadastro.add(mntmMarca);
 		mnCadastro.add(mntmCategoria);
@@ -71,13 +88,5 @@ public class MenuView {
 		menuBar.add(mnEstoque);
 		mnEstoque.add(mntmVerEstoque);
 		mnEstoque.add(mntmEstatistica);
-	}
-
-	public void addLister(ActionListener listener) {
-		this.mntmProduto.addActionListener(listener);
-		this.mntmCategoria.addActionListener(listener);
-		this.mntmEstatistica.addActionListener(listener);
-		this.mntmMarca.addActionListener(listener);
-		this.mntmVerEstoque.addActionListener(listener);
 	}
 }
