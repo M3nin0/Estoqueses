@@ -212,7 +212,7 @@ public class CadastroProdutoView implements Observable<Produto> {
 		if (!textDescricao.getText().trim().isEmpty()) {
 			descricao = textDescricao.getText();
 		} else {
-			camposInvalidos[cont] = "Descrição precisa ser preenchido";
+			camposInvalidos[cont] = "O campo descrição precisa ser preenchido";
 			cont++;
 		}
 

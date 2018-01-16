@@ -11,19 +11,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import model.Marca;
+import model.Categoria;
 import model.Observable;
 import model.Observer;
 
-public class CadastroMarcaView implements Observable<Marca> {
+public class CadastroCategoriaView implements Observable<Categoria> {
 
 	public JFrame frame = new JFrame();
 	private JTextField textNome;
 	private JTextField textDescricao;
 
-	private List<Observer<Marca>> observers;
+	List<Observer<Categoria>> observers;
 
-	public CadastroMarcaView() {
+	public CadastroCategoriaView() {
 		observers = new ArrayList<>();
 		initialize();
 	}
@@ -34,14 +34,14 @@ public class CadastroMarcaView implements Observable<Marca> {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton btnCadastro = new JButton("Cadastrar");
-		btnCadastro.addActionListener(new ActionListener() {
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String camposInvalidos[] = new String[2];
+				Integer cont = 0;
 				String nome = null;
 				String descricao = null;
-				Integer cont = 0;
+				String camposInvalidos[] = new String[2];
 
 				if (!textNome.getText().trim().equals("")) {
 					nome = textNome.getText();
@@ -59,81 +59,73 @@ public class CadastroMarcaView implements Observable<Marca> {
 
 				if (cont != 0) {
 
-					String stringInvalidos = "";
+					String invalidos = "";
 
 					for (int i = 0; i < cont; i++) {
-						stringInvalidos += "* O campo " + camposInvalidos[i] + " precisa ser preenchido\n";
+						invalidos += "* O campo " + camposInvalidos[i] + " precisa ser preenchido\n";
 					}
 
-					JOptionPane.showMessageDialog(null,
-							"Os seguintes campos precisam ser preenchidos: \n" + stringInvalidos);
+					JOptionPane.showMessageDialog(null, "Os seguintes campos precisam ser preenchidos: \n" + invalidos);
+
 				} else {
-					notifyObservers(new Marca(nome, descricao));
+					notifyObservers(new Categoria(nome, descricao));
 				}
+
 			}
 		});
-		btnCadastro.setBounds(12, 12, 126, 37);
-		frame.getContentPane().add(btnCadastro);
+		btnCadastrar.setBounds(12, 12, 126, 37);
+		frame.getContentPane().add(btnCadastrar);
 
 		JButton btnLimpar = new JButton("Limpar campos");
-		btnLimpar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				textNome.setText("");
-				textDescricao.setText("");
-			}
-		});
 		btnLimpar.setBounds(137, 12, 140, 37);
 		frame.getContentPane().add(btnLimpar);
 
-		JButton btnSair = new JButton("Voltar");
-		btnSair.addActionListener(new ActionListener() {
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
 			}
 		});
-		btnSair.setBounds(382, 12, 126, 37);
-		frame.getContentPane().add(btnSair);
+		btnVoltar.setBounds(382, 12, 126, 37);
+		frame.getContentPane().add(btnVoltar);
 
 		JLabel label = new JLabel("Nome");
-		label.setBounds(31, 102, 70, 15);
+		label.setBounds(23, 95, 70, 15);
 		frame.getContentPane().add(label);
 
 		textNome = new JTextField();
 		textNome.setColumns(10);
-		textNome.setBounds(31, 127, 195, 32);
+		textNome.setBounds(23, 120, 195, 32);
 		frame.getContentPane().add(textNome);
 
 		JLabel label_1 = new JLabel("Descrição");
-		label_1.setBounds(31, 182, 70, 15);
+		label_1.setBounds(23, 175, 70, 15);
 		frame.getContentPane().add(label_1);
 
 		textDescricao = new JTextField();
 		textDescricao.setColumns(30);
-		textDescricao.setBounds(31, 209, 428, 85);
+		textDescricao.setBounds(23, 202, 428, 85);
 		frame.getContentPane().add(textDescricao);
 	}
 
 	@Override
-	public void registerObserver(Observer<Marca> observer) {
-		observers.add(observer);
-
-	}
-
-	@Override
-	public void removeObserver(Observer<Marca> observer) {
+	public void registerObserver(Observer<Categoria> observer) {
 		observers.add(observer);
 	}
 
 	@Override
-	public void notifyObservers(Marca obj) {
-		for (Observer<Marca> observer : observers) {
+	public void removeObserver(Observer<Categoria> observer) {
+		observers.remove(observer);
+	}
+
+	@Override
+	public void notifyObservers(Categoria obj) {
+		for (Observer<Categoria> observer : observers) {
 			try {
 				observer.update(obj);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "Erro na comunicação\n" + e);
 			}
 		}
-
 	}
-
 }

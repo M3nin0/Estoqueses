@@ -27,17 +27,16 @@ public class CadastroMarcaController implements Observer<Marca> {
 	}
 
 	@Override
-	public void update(Marca marca) throws Exception {
-		String query = "INSERT INTO db_prods.marca (nome, descricao) " 
-				+ "VALUES (?, ?)";
+	public void update(Marca novaMarca) throws Exception {
+		String query = "INSERT INTO db_prods.marca (nome, descricao) " + "VALUES (?, ?)";
 
 		PreparedStatement stmt = conn.prepareStatement(query);
-		stmt.setString(1, marca.getMarca());
-		stmt.setString(2, marca.getDescricao());
-		
+		stmt.setString(1, novaMarca.getMarca());
+		stmt.setString(2, novaMarca.getDescricao());
+
 		stmt.executeUpdate();
-		
+
 		JOptionPane.showMessageDialog(cadastroMarca.frame, "Cadastro feito com sucesso");
-		
+
 	}
 }

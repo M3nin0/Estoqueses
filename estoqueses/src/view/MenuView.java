@@ -10,6 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import controller.CadastroCategoriaController;
 import controller.CadastroMarcaController;
 import controller.CadastroProdutoController;
 
@@ -95,6 +96,17 @@ public class MenuView {
 			}
 		});
 		mnCadastro.add(mntmCategoria);
+		mntmCategoria.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					new CadastroCategoriaController();
+				} catch (SQLException el) {
+					JOptionPane.showMessageDialog(null, "Erro ao carregar o banco de dados");
+				}
+			}
+		});
 
 		JMenu mnEstoque = new JMenu("Estoque");
 		menuBar.add(mnEstoque);

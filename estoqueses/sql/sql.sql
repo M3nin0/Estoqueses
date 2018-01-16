@@ -5,7 +5,7 @@ DEFAULT COLLATE utf8_general_ci;
 USE db_prods;
 
 CREATE TABLE produtos(
-	id int NOT NULL AUTO_INCREMENT,
+	id INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(60) NOT NULL, -- Não pode ser null
 	descricao VARCHAR(120),
     especificacao VARCHAR(80),
@@ -18,7 +18,14 @@ CREATE TABLE produtos(
 )DEFAULT CHARSET = utf8;
 
 CREATE TABLE marca (
-	id int NOT NULL AUTO_INCREMENT,
+	id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(35) NOT NULL,
+    descricao VARCHAR(120),
+    PRIMARY KEY (id)
+)DEFAULT CHARSET = utf8;
+
+CREATE TABLE categoria (
+	id INT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(35) NOT NULL,
     descricao VARCHAR(120),
     PRIMARY KEY (id)
