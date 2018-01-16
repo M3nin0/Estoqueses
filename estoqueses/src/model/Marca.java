@@ -5,6 +5,11 @@ public class Marca {
 	private String marca;
 	private String descricao;
 
+	public Marca(String marca, String descricao) {
+		this.marca = marca;
+		this.descricao = descricao;
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -28,4 +33,9 @@ public class Marca {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public String toString() {
+		return this.marca;
+	}
+
 }

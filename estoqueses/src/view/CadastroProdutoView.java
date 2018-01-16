@@ -68,6 +68,13 @@ public class CadastroProdutoView implements Observable<Produto> {
 
 		btnLimparCampos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textDescricao.setText("");
+				textEspecificacao.setText("");
+				textName.setText("");
+				textPreco.setText("");
+				textQuantidade.setText("");
+				textUnidade.setText("");
+
 			}
 		});
 		btnLimparCampos.setBounds(111, 12, 91, 37);
@@ -179,6 +186,15 @@ public class CadastroProdutoView implements Observable<Produto> {
 		textPreco.setColumns(10);
 		textPreco.setBounds(550, 195, 59, 32);
 		frmTelaDeCadastro.getContentPane().add(textPreco);
+		
+		JButton btnSair = new JButton("Voltar");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmTelaDeCadastro.setVisible(false);
+			}
+		});
+		btnSair.setBounds(550, 419, 91, 37);
+		frmTelaDeCadastro.getContentPane().add(btnSair);
 	}
 
 	public void validateProduto() {
@@ -274,5 +290,4 @@ public class CadastroProdutoView implements Observable<Produto> {
 			}
 		}
 	}
-
 }

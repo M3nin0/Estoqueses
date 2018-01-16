@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import model.ModelDAO;
 import model.Observer;
 import model.Produto;
@@ -38,7 +40,9 @@ public class CadastroProdutoController implements Observer<Produto> {
 		stmt.setInt(6, obj.getQuantidade());
 		stmt.setString(7, obj.getUnidade());
 		stmt.setDouble(8, obj.getPreco());
-
+		
 		stmt.executeUpdate();
+		
+		JOptionPane.showMessageDialog(this.cadastro.frmTelaDeCadastro, "Atualização feita com sucesso");
 	}
 }

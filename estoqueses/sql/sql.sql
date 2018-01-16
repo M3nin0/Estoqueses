@@ -16,3 +16,10 @@ CREATE TABLE produtos(
     preco DECIMAL(15, 2) NOT NULL,
 	PRIMARY KEY (id) -- Define o ID como chave primária
 )DEFAULT CHARSET = utf8;
+
+CREATE TABLE marca (
+	id int NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(35) NOT NULL,
+    descricao VARCHAR(120),
+    PRIMARY KEY (id)
+)DEFAULT CHARSET = utf8;
