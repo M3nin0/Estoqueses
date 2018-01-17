@@ -1,0 +1,9 @@
+{
+	"db": {
+		"serverName": "localhost",
+		"portNumber": "3306",
+		"databaseName": "db_prods",
+		"user": "root",
+		"password": "123"
+	}
+}

@@ -1,10 +1,13 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+
+import org.json.simple.parser.ParseException;
 
 import model.Marca;
 import model.ModelDAO;
@@ -16,7 +19,7 @@ public class CadastroMarcaController implements Observer<Marca> {
 	private Connection conn = null;
 	private CadastroMarcaView cadastroMarca;
 
-	public CadastroMarcaController() throws SQLException {
+	public CadastroMarcaController() throws SQLException, IOException, ParseException {
 
 		conn = new ModelDAO().init().getConnection();
 

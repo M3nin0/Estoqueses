@@ -1,10 +1,13 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+
+import org.json.simple.parser.ParseException;
 
 import model.ModelDAO;
 import model.Observer;
@@ -16,7 +19,7 @@ public class CadastroProdutoController implements Observer<Produto> {
 	private Connection conn = null;
 	private CadastroProdutoView cadastro;
 	
-	public CadastroProdutoController() throws SQLException {
+	public CadastroProdutoController() throws SQLException, IOException, ParseException {
 		conn = new ModelDAO().init().getConnection();
 		cadastro = new CadastroProdutoView();
 		cadastro.registerObserver(this);

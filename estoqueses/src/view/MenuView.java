@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
@@ -10,9 +11,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import org.json.simple.parser.ParseException;
+
 import controller.CadastroCategoriaController;
 import controller.CadastroMarcaController;
 import controller.CadastroProdutoController;
+import controller.ConfiguracaoController;
 
 public class MenuView {
 
@@ -55,7 +59,11 @@ public class MenuView {
 		JMenuItem mntmConfiguraes = new JMenuItem("Configurações");
 		mntmConfiguraes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				try {
+					new ConfiguracaoController();
+				} catch (IOException | ParseException e) {
+					JOptionPane.showMessageDialog(null, "Erro ao tentar ler as configurações");
+				} 
 			}
 		});
 		mnInicio.add(mntmConfiguraes);
@@ -77,7 +85,7 @@ public class MenuView {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new CadastroProdutoController();
-				} catch (SQLException e1) {
+				} catch (SQLException | IOException | ParseException e1) {
 					JOptionPane.showMessageDialog(null, "Erro ao carregar o banco de dados");
 				}
 			}
@@ -90,7 +98,7 @@ public class MenuView {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new CadastroMarcaController();
-				} catch (SQLException e1) {
+				} catch (SQLException | IOException | ParseException e1) {
 					JOptionPane.showMessageDialog(null, "Erro ao carregar o banco de dados");
 				}
 			}
@@ -102,7 +110,7 @@ public class MenuView {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new CadastroCategoriaController();
-				} catch (SQLException el) {
+				} catch (SQLException | IOException | ParseException el) {
 					JOptionPane.showMessageDialog(null, "Erro ao carregar o banco de dados");
 				}
 			}
