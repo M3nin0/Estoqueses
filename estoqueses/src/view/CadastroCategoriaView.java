@@ -77,6 +77,12 @@ public class CadastroCategoriaView implements Observable<Categoria> {
 		frame.getContentPane().add(btnCadastrar);
 
 		JButton btnLimpar = new JButton("Limpar campos");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textNome.setText("");
+				textDescricao.setText("");
+			}
+		});
 		btnLimpar.setBounds(137, 12, 140, 37);
 		frame.getContentPane().add(btnLimpar);
 

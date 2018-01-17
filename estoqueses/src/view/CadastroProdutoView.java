@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,10 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import org.json.simple.parser.ParseException;
+
+import controller.CadastroCategoriaController;
+import controller.CadastroMarcaController;
 import model.Categoria;
 import model.Marca;
 import model.Observable;
@@ -82,10 +88,24 @@ public class CadastroProdutoView implements Observable<Produto> {
 
 		btnCadastrarCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					new CadastroCategoriaController();
+				} catch (SQLException | IOException | ParseException e) {
+					JOptionPane.showMessageDialog(null, "Erro ao tentar acessar\n" + e);
+				}
 			}
 		});
 		btnCadastrarCategoria.setBounds(291, 12, 178, 37);
 		frmTelaDeCadastro.getContentPane().add(btnCadastrarCategoria);
+		btnCadastrarMarca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					new CadastroMarcaController();
+				} catch (SQLException | IOException | ParseException e) {
+					JOptionPane.showMessageDialog(null, "Erro ao tentar acessar\n" + e);
+				}
+			}
+		});
 
 		btnCadastrarMarca.setBounds(469, 12, 178, 37);
 		frmTelaDeCadastro.getContentPane().add(btnCadastrarMarca);
@@ -186,7 +206,7 @@ public class CadastroProdutoView implements Observable<Produto> {
 		textPreco.setColumns(10);
 		textPreco.setBounds(550, 195, 59, 32);
 		frmTelaDeCadastro.getContentPane().add(textPreco);
-		
+
 		JButton btnSair = new JButton("Voltar");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

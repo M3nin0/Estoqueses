@@ -18,12 +18,12 @@ public class CadastroProdutoController implements Observer<Produto> {
 
 	private Connection conn = null;
 	private CadastroProdutoView cadastro;
-	
+
 	public CadastroProdutoController() throws SQLException, IOException, ParseException {
 		conn = new ModelDAO().init().getConnection();
 		cadastro = new CadastroProdutoView();
 		cadastro.registerObserver(this);
-		
+
 		cadastro.frmTelaDeCadastro.setVisible(true);
 	}
 
@@ -43,9 +43,9 @@ public class CadastroProdutoController implements Observer<Produto> {
 		stmt.setInt(6, obj.getQuantidade());
 		stmt.setString(7, obj.getUnidade());
 		stmt.setDouble(8, obj.getPreco());
-		
+
 		stmt.executeUpdate();
-		
+
 		JOptionPane.showMessageDialog(this.cadastro.frmTelaDeCadastro, "Atualização feita com sucesso");
 	}
 }

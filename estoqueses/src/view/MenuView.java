@@ -63,7 +63,7 @@ public class MenuView {
 					new ConfiguracaoController();
 				} catch (IOException | ParseException e) {
 					JOptionPane.showMessageDialog(null, "Erro ao tentar ler as configurações");
-				} 
+				}
 			}
 		});
 		mnInicio.add(mntmConfiguraes);

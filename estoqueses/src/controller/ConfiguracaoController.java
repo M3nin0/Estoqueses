@@ -19,7 +19,8 @@ public class ConfiguracaoController implements Observer<String> {
 		configuracao = new ConfiguracaoView();
 		configuracao.registerObserver(this);
 
-		configuracao.textPathConfig.setText(Parser.parseConfig("config/initials.json", "configPath").get("config").toString());
+		configuracao.textPathConfig
+				.setText(Parser.parseConfig("config/initials.json", "configPath").get("config").toString());
 
 		configuracao.frame.setVisible(true);
 	}

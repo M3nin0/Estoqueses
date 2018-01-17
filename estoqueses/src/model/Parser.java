@@ -42,6 +42,7 @@ public class Parser {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public static JSONObject generateDefaultConfig() {
 		JSONObject json_1 = new JSONObject();
 		JSONObject json_2 = new JSONObject();
